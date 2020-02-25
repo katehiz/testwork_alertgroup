@@ -1,0 +1,50 @@
+// Script for https://www.json-generator.com
+/*[
+    {
+        id: '{{index() + 1}}',
+        name: '{{company()}}',
+        line: '{{integer(1,5)}} очередь {{integer(1,10)}} корпус',
+        flatId: '{{integer(0,500)}}',
+        params: '{{random("А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ц","Ч","Ш","Щ","Ы","Э","Ю","Я")}}{{integer(1,10)}}-{{random("А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ц","Ч","Ш","Щ","Ы","Э","Ю","Я")}}{{integer(1,10)}} / {{random("А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ц","Ч","Ш","Щ","Ы","Э","Ю","Я")}}{{integer(1,10)}}-{{random("А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ц","Ч","Ш","Щ","Ы","Э","Ю","Я")}}{{integer(1,10)}}',
+        squares: [
+            '{{repeat(integer(3,10))}}',
+            {
+                id: '{{index() + 1}}',
+                type_square: '{{random(1, 2, 3)}}',
+                type_property: '{{random(1, 2, 3, 4)}}',
+                name: function(tags, index) {
+                    function getRandomIntInclusive(min, max) {
+                        min = Math.ceil(min);
+                        max = Math.floor(max);
+                        return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+                    }
+
+                    var maxCountRooms = {
+                        "комната":  5,
+                        "холл"   :  1,
+                        "туалет" :  2,
+                        "ванная" :  2,
+                        "балкон" :  3
+                    };
+                    var rooms = ["комната", "холл", "туалет", "ванная", "балкон"];
+                    var rand = getRandomIntInclusive(0,4);
+                    var result;
+
+                    result = rooms[rand] + ' ' + getRandomIntInclusive(1, maxCountRooms[rooms[rand]]);
+
+                    return result;
+                },
+                square: '{{integer(10,100)}}'
+            }
+        ],
+        typeOwn: '{{random(1, 2, 3, 4)}}',
+        participants: [
+            '{{repeat( integer(1,3) )}}',
+            {
+                id: '{{index() + 1}}',
+                name: '{{firstName()}} {{surname()}}',
+                phone: '+7 {{phone()}}'
+            }
+        ]
+    }
+]*/

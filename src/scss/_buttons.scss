@@ -1,0 +1,73 @@
+.btn {
+  display: inline-block;
+  min-width: $input-height;
+  padding: $btn-padding-y $btn-padding-x;
+  border: $btn-border-width solid $border-color;
+  border-radius: $btn-border-radius;
+  line-height: $btn-line-height;
+  font-weight: $btn-font-weight;
+  font-size: $btn-font-size;
+  white-space: $btn-white-space;
+  color: $input-color;
+  text-align: center;
+  vertical-align: middle;
+  cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
+  user-select: none;
+  transition: $btn-transition;
+
+  &:hover {
+    color: $aqua-blue;
+    border-color: $aqua-blue;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    pointer-events: none;
+    opacity: $btn-disabled-opacity;
+  }
+
+  &-info {
+    color: $aqua-blue;
+    background: $white;
+    font-size: $font-size-base * 0.75;
+    line-height: $btn-line-height * $font-size-base; // save base line-height
+
+    &:hover {
+      background: $aqua-blue;
+      border-color: $aqua-blue;
+      color: $white;
+    }
+  }
+
+  &-secondary {
+    color: $base-text-color;
+    border-color: $aqua-blue;
+    background-color: $white;
+
+    &:hover {
+      background-color: $aqua-blue;
+      border-color: $aqua-blue;
+      color: $white;
+    }
+  }
+
+  &-primary {
+    color: $white;
+    background-color: $aqua-blue;
+    border-color: $aqua-blue;
+
+    &:hover {
+      color: $base-text-color;
+      background-color: $white;
+      border-color: $aqua-blue;
+    }
+  }
+}

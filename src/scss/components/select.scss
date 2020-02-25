@@ -1,0 +1,42 @@
+@import '../functions';
+@import '../variables';
+@import '../forms';
+@import '~mobius1-selectr/src/selectr.css';
+
+.selectr {
+  &-selected {
+    @extend .form-element;
+  }
+  &-placeholder {
+    color: $input-placeholder-color;
+  }
+  &-option {
+    padding: add($input-padding-y, 2px) $input-padding-x;
+    font-size: $input-font-size;
+
+    &.active {
+      background-color: $creme-gray;
+      color: $base-text-color;
+    }
+
+    &.selected {
+      font-weight: bold;
+      &, &.active {
+        background-color: $light-gray;
+        color: $base-text-color;
+      }
+    }
+  }
+  /*&-selected::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: $input-height;
+    transform: none;
+    border: none;
+    border-left: 1px solid $light-gray;
+  }*/
+}
