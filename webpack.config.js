@@ -1,13 +1,13 @@
-const path = require('path');
+const path = require("path");
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
-let NODE_ENV = process.env.NODE_ENV;
+/*let NODE_ENV = process.env.NODE_ENV;*/
 
 const config = {
     entry: {
-        build: './src/index.js'
+        build: "./src/index.js"
         //,script: './template_html/dev/js/script.js'
     },
     output: {
@@ -22,18 +22,18 @@ const config = {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
+                loader: "vue-loader",
                 options: {
                     loaders: {
-                        js: 'babel-loader'
+                        js: "babel-loader"
                     }
                 }
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
+                loader: "babel-loader",
                 exclude: file => {
-                    /node_modules/.test(file)// && !/\.vue\.js/.test(file)
+                    /node_modules/.test(file);// && !/\.vue\.js/.test(file)
                 }
             },
             // это правило будет применяться к обычным файлам `.scss`
@@ -41,16 +41,16 @@ const config = {
             {
                 test: /\.scss$/,
                 use: [
-                    'vue-style-loader',
-                    'css-loader',
-                    'sass-loader'
+                    "vue-style-loader",
+                    "css-loader",
+                    "sass-loader"
                 ]
             },
             {
                 test: /\.css$/,
                 use: [
-                    'vue-style-loader',
-                    'css-loader'
+                    "vue-style-loader",
+                    "css-loader"
                     /*,NODE_ENV !== 'production'
                         ? 'vue-style-loader'
                         : MiniCssExtractPlugin.loader,
@@ -67,7 +67,7 @@ const config = {
 };
 
 module.exports = (env, options) => {
-    let development = options.mode === 'development'; // -> (boolean)
-    config.devtool = development ? 'eval-sourcemap': 'source-map';
+    let development = options.mode === "development"; // -> (boolean)
+    config.devtool = development ? "eval-sourcemap": "source-map";
     return config;
 };

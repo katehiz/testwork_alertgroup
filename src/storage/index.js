@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from "vue";
+import Vuex from "vuex";
 
-import squares from './modules/objects';
+import squares from "./modules/objects";
 
 Vue.use(Vuex);
 

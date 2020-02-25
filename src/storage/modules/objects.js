@@ -4,7 +4,7 @@ export default {
     },
     actions: {
         loadObject: function (context) {
-            sendAjaxRequest("GET", '/src/storage/database.json')
+            sendAjaxRequest("GET", "/src/storage/database.json")
                 .then( (response) => JSON.parse(response) )
                 .then( (db) => {
                     let index, object = null;
@@ -12,13 +12,13 @@ export default {
                         index = getRandomIntInclusive(0, db.length - 1);
                         object = db[index];
                     }
-                    context.commit('updateObject', object);
+                    context.commit("updateObject", object);
                 })
-                .catch( (error) => {console.error('Ошибка получения данных', error.statusText)} );
+                .catch( (error) => {console.error("Ошибка получения данных", error.statusText);} );
         },
         saveObject(context) {
-            let object = context.getters.getCurrentObject;
-            sendAjaxRequest("POST", '//localhost', object);
+            let json = JSON.stringify(context.getters.getCurrentObject);
+            sendAjaxRequest("POST", "//localhost", json);
         }
     },
     mutations: {
@@ -38,7 +38,7 @@ export default {
             return state.flat;
         }
     }
-}
+};
 
 // получить случайное целое число
 function getRandomIntInclusive(min, max) {
@@ -49,10 +49,11 @@ function getRandomIntInclusive(min, max) {
 
 // асинхронный Ajax-запрос
 function sendAjaxRequest(method, url, data) {
-    method = method || 'GET';
+    method = method || "GET";
     let xhr = new XMLHttpRequest();
     return new Promise( function(resolve, reject) {
         xhr.open(method, url, true);
+        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
         xhr.onload = function () {
             if (this.status >= 200 && this.status < 300) {
                 resolve(xhr.response);
@@ -69,6 +70,6 @@ function sendAjaxRequest(method, url, data) {
                 statusText: xhr.statusText
             });
         };
-        xhr.send(null);
+        xhr.send(data);
     });
 }
