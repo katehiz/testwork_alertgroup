@@ -31,6 +31,7 @@
 
 <script>
     import {CustomSelect} from '../assets/js/scripts.js';
+
     export default {
         name: 'conditionsOptionsBlock',
         data: function() {

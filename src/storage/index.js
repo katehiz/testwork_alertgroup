@@ -6,7 +6,7 @@ import squares from "./modules/objects";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    modules: {
-        squares
-    }
+  modules: {
+    squares
+  }
 });

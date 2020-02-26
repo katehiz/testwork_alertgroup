@@ -23,9 +23,6 @@
     import actionsBlock from './components/actionsBlock.vue';
 
     export default {
-        data: function() {
-            return {}
-        },
         components: {
             'general-info-block': generalInfoBlock,
             'areas-info-block': areasInfoBlock,
@@ -34,17 +31,11 @@
             'actions-block': actionsBlock
         },
 
-        beforeCreate: function () {},
-
         created: async function () {
             await this.$store.dispatch('loadObject');
         },
 
-        beforeMount: function () {},
-
-        mounted: function () {
-
-        },
+        mounted: function () {},
 
         computed: {
             getCurrentObject() {
@@ -56,5 +47,5 @@
 </script>
 
 <style lang="scss">
-    @import "scss/style";
+    @import "./scss/style";
 </style>

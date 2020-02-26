@@ -1,8 +1,8 @@
-@import 'functions';
-@import 'variables';
-@import "grid";
-@import "forms";
-@import 'buttons';
+@import 'utils/functions';
+@import 'utils/variables';
+@import "modules/grid";
+@import "modules/forms";
+@import 'modules/buttons';
 @import 'components/select';
 
 html {
@@ -188,21 +188,8 @@ body {
   }
 }
 
-
 // Toggle accordeon
 .accordion {
-  /*.section__body {
-    overflow: hidden;
-    transition: max-height .4s ease-in;
-  }
-  &:not(.toggled) .section__body {
-    max-height: 0;
-    padding-bottom: 0;
-  }
-
-  &.toggled {
-    overflow: visible;
-  }*/
   &:not(.toggled) .section__body {
     display: none;
   }

@@ -66,7 +66,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../scss/_variables.scss';
+    @import '../scss/utils/variables';
 
     table thead th {
         width: calc(100% / 3);

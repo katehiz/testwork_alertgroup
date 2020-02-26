@@ -1,7 +1,7 @@
-@import '../functions';
-@import '../variables';
-@import '../forms';
-@import '~mobius1-selectr/src/selectr.css';
+@import '../utils/functions';
+@import '../utils/variables';
+@import '../modules/forms';
+@import '~mobius1-selectr/dist/selectr.min.css';
 
 .selectr {
   &-selected {
@@ -27,16 +27,4 @@
       }
     }
   }
-  /*&-selected::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2rem;
-    height: $input-height;
-    transform: none;
-    border: none;
-    border-left: 1px solid $light-gray;
-  }*/
 }

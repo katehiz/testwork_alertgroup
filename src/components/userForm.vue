@@ -79,7 +79,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../scss/variables';
+    @import '../scss/utils/variables';
 
     .label-box {
         display: flex;
