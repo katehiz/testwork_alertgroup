@@ -3,7 +3,7 @@
         <div class="panel">
             <header class="panel__head">Стороны и объект договора</header>
             <main class="panel__body">
-                <general-info-block v-bind:flat="getCurrentObject"></general-info-block>
+                <general-info-block></general-info-block>
                 <areas-info-block v-bind:squares="getCurrentObject.squares"></areas-info-block>
                 <conditions-options-block></conditions-options-block>
                 <participants-control-block v-bind:flat="getCurrentObject"></participants-control-block>
@@ -31,18 +31,15 @@
             'actions-block': actionsBlock
         },
 
-        created: async function () {
-            await this.$store.dispatch('loadObject');
+        mounted: function () {
+            this.$store.dispatch('loadObject');
         },
-
-        mounted: function () {},
 
         computed: {
             getCurrentObject() {
                 return this.$store.getters.getCurrentObject;
             }
-        },
-        methods: {}
+        }
     }
 </script>
 

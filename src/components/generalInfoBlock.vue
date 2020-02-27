@@ -31,7 +31,11 @@
 <script>
     export default {
         name: 'generalInfoBlock',
-        props: ['flat']
+        computed: {
+            flat() {
+                return this.$store.getters.getCurrentObject;
+            }
+        }
     }
 </script>
 

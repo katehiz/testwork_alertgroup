@@ -23,7 +23,7 @@
                            v-model="localUser.phone">
                     <button type="button" class="btn remove"
                             v-bind:data-user-id="user.id"
-                            v-bind:disabled="successRemove === true ? false : true"
+                            v-bind:disabled="successRemove !== true"
                             v-on:click="removeUser(user.id)">x</button>
                 </div>
             </div>
@@ -32,11 +32,11 @@
 </template>
 
 <script>
+
     import Inputmask from 'inputmask';
 
     export default {
         name: "userForm",
-
         props: {
             user: {
                 type: Object,
@@ -68,12 +68,11 @@
         },
         methods: {
             editUser() {
-                //console.log('edit EVENT from userForm component');
                 this.$emit('edited', Object.assign({}, this.localUser))
             },
             removeUser(userId) {
                 this.$emit('remove', userId);
-            },
+            }
         }
     }
 </script>
