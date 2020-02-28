@@ -3,6 +3,7 @@
 @import "modules/grid";
 @import "modules/forms";
 @import 'modules/buttons';
+@import 'modules/tables';
 @import 'components/select';
 
 html {
@@ -126,63 +127,6 @@ body {
     .section__toggle-btn {
       img {
         transform: rotate(180deg) translateY(-2px);
-      }
-    }
-  }
-}
-
-.table {
-  border-collapse: collapse;
-  width: 100%;
-  vertical-align: middle;
-  text-align: center;
-  border: $table-border-width solid $table-border-color;
-
-  th,
-  td {
-    padding: 0.75rem;
-    border: $table-border-width solid $table-border-color;
-  }
-  th {font-size: $font-size-3;}
-  td {font-size: $font-size-4;}
-
-  tbody {
-    vertical-align: inherit;
-  }
-
-  thead th {
-    vertical-align: middle;
-    border-bottom-color: $table-border-color;
-  }
-
-  &--radius {
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 0;
-    th {
-      border-width: 1px 0 1px 1px;
-      &:last-child {border-width: 1px}
-    }
-    td {
-      border-width: 0 0 1px 1px;
-      &:last-child {border-width: 0 1px 1px 1px}
-    }
-
-    tr:first-child {
-      th:first-child {
-        border-top-left-radius: $border-radius;
-      }
-      th:last-child {
-        border-top-right-radius: $border-radius;
-      }
-    }
-
-    tr:last-child {
-      td:first-child {
-        border-bottom-left-radius: $border-radius;
-      }
-      td:last-child {
-        border-bottom-right-radius: $border-radius;
       }
     }
   }
