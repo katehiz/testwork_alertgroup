@@ -23,7 +23,7 @@ export default {
 		},
 		saveObject: function (context) {
 			let json = JSON.stringify(context.getters.getCurrentObject);
-			sendAjaxRequest("POST", "//localhost", json);
+			sendAjaxRequest("POST", "//localhost:8080", json);
 		}
 	},
 	mutations: {

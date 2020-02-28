@@ -52,16 +52,18 @@
                 default: () => []
             }
         },
-        computed: {
-            squaresGroups() {
-                let result = {};
-                result.type1 = this.squares.filter( (square) => square.type_square === 1 );
-                result.type2 = this.squares.filter( (square) => square.type_square === 2 );
-                result.type3 = this.squares.filter( (square) => square.type_square === 3 );
-                result.maxCount = Math.max(result.type1.length, result.type2.length, result.type3.length);
-                return result;
-            }
-        }
+		computed: {
+			squaresGroups() {
+				let result = {};
+				if (this.squares) {
+					result.type1 = this.squares.filter( (square) => square.type_square === 1 );
+					result.type2 = this.squares.filter( (square) => square.type_square === 2 );
+					result.type3 = this.squares.filter( (square) => square.type_square === 3 );
+					result.maxCount = Math.max(result.type1.length, result.type2.length, result.type3.length);
+				}
+				return result;
+			}
+		}
     }
 </script>
 

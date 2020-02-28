@@ -31,7 +31,6 @@ body {
   color: $comment-color;
 }
 
-
 // helpers
 .content-align-between {
   display: flex;
@@ -107,12 +106,6 @@ body {
     &:hover {
       box-shadow: $input-btn-focus-box-shadow;
     }
-
-    /*&.toggled {
-      img {
-        transform: rotate(180deg) translateY(-2px);
-      }
-    }*/
   }
 
   &__body {

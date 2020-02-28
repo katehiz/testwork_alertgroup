@@ -14,8 +14,7 @@
                     v-bind:successRemove="successRemove"
                     v-on:remove="removeUser"
                     v-on:edited="editUser"
-                    v-bind:user="user"
-            ></user-form>
+                    v-bind:user="user"></user-form>
             <div class="actions">
                 <button class="btn btn-secondary" v-on:click="addNewUser">Добавить участника</button>
                 <button type="button" class="btn btn-info" v-on:click="resetAddedUsers">Очистить</button>
@@ -33,13 +32,8 @@
         components: {
             'user-form': userForm
         },
-        props: {
-            flat: {
-                type: Object,
-                required: true,
-                default: () => {}
-            }
-        },
+        props: ['flat'],
+
         data: function() {
             return {
                 users: []
@@ -54,7 +48,7 @@
                 return this.users.length > 1
             }
         },
-        mounted: function() {
+		mounted: function() {
             Accordion.init()
         },
         methods: {
@@ -96,7 +90,7 @@
             },
 
             copyUsersToLocalState() {
-                this.users = [...this.flat.participants];
+                this.users = [...this.$props.flat.participants];
             },
             updateGlobalStateUsers() {
                 this.$store.commit('updateUsersList', this.users)
