@@ -6,7 +6,7 @@
                 <general-info-block></general-info-block>
                 <areas-info-block v-bind:squares="getCurrentObject.squares"></areas-info-block>
                 <conditions-options-block></conditions-options-block>
-                <participants-control-block v-bind:flat="getCurrentObject"></participants-control-block>
+                <participants-control-block></participants-control-block>
             </main>
             <footer class="panel__actions">
                 <actions-block></actions-block>
@@ -30,13 +30,11 @@
             'participants-control-block': participantsControlBlock,
             'actions-block': actionsBlock
         },
-
-        mounted: function () {
-            this.$store.dispatch('loadObject');
+        mounted: async function () {
+            await this.$store.dispatch('LOAD_OBJECT');
         },
-
         computed: {
-            getCurrentObject() {
+            getCurrentObject: function() {
                 return this.$store.getters.getCurrentObject;
             }
         }

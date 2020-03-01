@@ -10,10 +10,10 @@
         name: 'actions-block',
         methods: {
             loadRandomObject() {
-                this.$store.dispatch('loadObject');
+                this.$store.dispatch('LOAD_OBJECT');
             },
             saveObject() {
-                this.$store.dispatch('saveObject');
+                this.$store.dispatch('SAVE_OBJECT');
             }
         }
     }

@@ -33,10 +33,10 @@ const config = {
 				exclude: /node_modules/,
 				use: [{
 					loader: "babel-loader",
-					options: {
-						presets: ["@babel/preset-env"],
-						// plugins: ["@babel/plugin-transform-regenerator", "@babel/plugin-transform-async-to-generator"]
-					}
+					/*options: {
+						presets: ["@babel/preset-env", {"useBuiltIns": "usage"}],
+						plugins: ["syntax-async-functions", "transform-regenerator"]
+					}*/
 				}]
 			},
 			// Будет применяться к обычным файлам `.scss`, а также к секциям `<style lang="scss">` в файлах `.vue`

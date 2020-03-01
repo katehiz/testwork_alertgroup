@@ -6,10 +6,9 @@
                 <img :src="'./src/assets/img/chevron-top.svg'">
             </button>
         </header>
-
         <main class="section__body">
             <user-form
-                    v-for="(user, index) in users"
+                    v-for="(user, index) in participants"
                     :key="index"
                     v-bind:successRemove="successRemove"
                     v-on:remove="removeUser"
@@ -32,25 +31,26 @@
         components: {
             'user-form': userForm
         },
-        props: ['flat'],
-
         data: function() {
             return {
                 users: []
             }
         },
-        watch: {
-            // обновляем локальное состояние
-            flat: 'copyUsersToLocalState'
-        },
         computed: {
-            successRemove() {
-                return this.users.length > 1
+            participants: function(){
+                return this.$store.getters.getUsers;
+            },
+            successRemove: function() {
+                return this.$store.getters.getUsers.length > 1
             }
         },
 		mounted: function() {
-            Accordion.init()
+            Accordion.init();
         },
+		watch: {
+			// обновляем локальное состояние
+            participants: 'copyUsersToLocalState',
+		},
         methods: {
             // добавление нового пользователя, объект с пустыми ключами
             addNewUser() {
@@ -66,34 +66,33 @@
                     name: '',
                     phone: ''
                 });
-                this.updateGlobalStateUsers();
+                this.updateUsersInStorage();
             },
             editUser(user) {
-                console.log(user);
                 let userId = user.id;
-                // записываем в массив изменения
                 let targetIndex = this.users.indexOf( this.users.find((user) =>user.id === userId) );
+                if (index == -1) return;
                 this.users[targetIndex] = user;
-
-                this.updateGlobalStateUsers()
+                this.updateUsersInStorage();
             },
             removeUser(userId) {
                 let findUser = this.users.find( (user) => user.id === userId );
                 let index = this.users.indexOf(findUser);
-                if (index !== -1) {
-                    this.users.splice(index, 1);
-                }
+                if (index == -1) return;
+                this.users.splice(index, 1);
+                this.updateUsersInStorage();
             },
             resetAddedUsers() {
                 this.users = this.users.filter( (user) => user.name !== '' );
-                this.updateGlobalStateUsers();
+                this.updateUsersInStorage();
             },
-
             copyUsersToLocalState() {
-                this.users = [...this.$props.flat.participants];
+                if (this.participants) {
+                    this.users = this.participants;
+                }
             },
-            updateGlobalStateUsers() {
-                this.$store.commit('updateUsersList', this.users)
+            updateUsersInStorage() {
+                this.$store.dispatch('UPDATE_USERS', this.users);
             }
         }
     }
